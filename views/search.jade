@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1 Search result for #{name}
+  each r in result
+    h3 #{r.item.card_name}
+    p !{r.item.effectText.replace(/\n/g, '<br/>')}
+
