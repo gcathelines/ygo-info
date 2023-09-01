@@ -1,11 +1,17 @@
 body {
-  padding: 30px;
+  margin: 30px;
   color:#F4EEE0;
   font: 14px  "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #393646;
+  align-items: center;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.content {
+  flex:1;
+  width: 80%;
 }
 
 input {
@@ -25,7 +31,6 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  /* border-bottom: 2px solid #6D5D6E; */
   background-color: #393646;
   width: 100%;
 }
@@ -40,7 +45,6 @@ footer {
   z-index: 100;
   background-color: #393646;
   width: 100%;
-  /* border-top: 2px solid #5f5858; */
 }
 
 footer > h3 {
@@ -78,6 +82,13 @@ footer > h3 {
   margin-right: 2%;
 }
 
+.card-image-big {
+  height: 100%;
+  width: 100%;
+  max-width: 15vw;
+  margin-top: 2vh;
+}
+
 .item {
   min-height:100px;
   display: flex;
@@ -99,5 +110,11 @@ footer > h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+}
+
+@media(max-width:600px)
+{
+  h3 {
+    font-size: 25px;
+  }
 }

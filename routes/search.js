@@ -83,8 +83,7 @@ router.get('/:name', function(req, res, next) {
 router.get('/card/:id', async function(req, res, next) {
 	search = idFuse.search('='+req.params.id)
 	search[0].image_exists = await check_image(search[0].item.konami_id)
-
-  	res.render('search', { name: req.params.name, result: [search[0]] });
+  	res.render('card', { name: search[0].item.card_name, card: search[0] });
 });
 
 module.exports = router;

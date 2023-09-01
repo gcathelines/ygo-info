@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  div(class='search-result')
+    - if(card.image_exists) {
+    img(src='/images/cards/'+card.item.konami_id+'.png' class='card-image-big')
+    - } else {
+    img(src='/images/cards/placeholdecard.png' class='card-image-big' style='margin-top:30px')
+    - }
+    div(class='card-data')
+      div(class='card-title')
+        h3 #{card.item.card_name}
+        - if(card.item.card_type == 'Monster') {
+        img(src='/images/'+card.item.attribute+'.webp' class='property-image')
+        p #{card.item.attribute}
+        - } else {
+        img(src='/images/'+card.item.card_type+'.webp' class='property-image')
+        - }
+      div(class='card-property')
+        - if(card.item.card_type == 'Monster') {
+          p [ #{card.item.monster_type_line} ] ATK: #{card.item.atk} DEF: #{card.item.def}
+        - } else {
+          p #{card.item.property} #{card.item.card_type} 
+          - if(card.item.property != 'Normal') {
+          img(src='/images/'+card.item.property+'.webp' class='property-image')
+          -}
+        - }
+      p !{card.item.effectText.replace(/\n/g, '<br/>')}
+
+  script. 
+    window.onload = function() {
+      document.getElementById("search").focus();
+    };
+    document.getElementById("submit").onclick = function () {
+        val = document.getElementById("search").value
+        location.href =  '/'+val;
+    };
+    document.getElementById("search").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        document.getElementById("submit").click();
+      }
+    });
+
