@@ -3,20 +3,21 @@ extends layout
 block content
   div(class='search-result')
     - if(card.image_exists) {
-    img(src='/images/cards/'+card.item.konami_id+'.png' class='card-image-big')
+    img(src='/images/cards/'+card.item.konami_id+'.png' class='card-image-big' style='margin-top:30px')
     - } else {
-    img(src='/images/cards/placeholdecard.png' class='card-image-big' style='margin-top:30px')
+    img(src='/images/placeholder.png' class='card-image' style='margin-top:30px')
     - }
+    div(class='card-title')
+      h3 #{card.item.card_name}
+      - if(card.item.card_type == 'Monster') {
+      img(src='/images/'+card.item.attribute+'.webp' class='property-image')
+      p #{card.item.attribute}
+      - } else {
+      img(src='/images/'+card.item.card_type+'.webp' class='property-image')
+      p #{card.item.card_type} 
+      - }
     div(class='card-data')
-      div(class='card-title')
-        h3 #{card.item.card_name}
-        - if(card.item.card_type == 'Monster') {
-        img(src='/images/'+card.item.attribute+'.webp' class='property-image')
-        p #{card.item.attribute}
-        - } else {
-        img(src='/images/'+card.item.card_type+'.webp' class='property-image')
-        - }
-      div(class='card-property')
+      div(class='card-property margin-top')
         - if(card.item.card_type == 'Monster') {
           p [ #{card.item.monster_type_line} ] ATK: #{card.item.atk} DEF: #{card.item.def}
         - } else {

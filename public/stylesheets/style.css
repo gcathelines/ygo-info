@@ -85,8 +85,13 @@ footer > h3 {
 .card-image-big {
   height: 100%;
   width: 100%;
-  max-width: 15vw;
+  max-width: 150px;
   margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+.center {
+  align-items: center;
 }
 
 .item {
@@ -116,6 +121,9 @@ footer > h3 {
   align-items: center;
 }
 
+.margin-top {
+  margin-top: 10px;
+}
 
 @media screen and (max-width: 600px) {
   header {
