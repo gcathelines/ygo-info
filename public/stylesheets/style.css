@@ -8,11 +8,6 @@ body {
   align-items: center;
 }
 
-
-a {
-  color: #00B7FF;
-}
-
 input {
   background-color: #393646;
   color:#F4EEE0;
@@ -53,8 +48,44 @@ footer > h3 {
   margin: 10px;
 }
 
-.item {
+.card-title, .card-property {
+  display: flex;
+  align-items: center;
+}
+
+.card-title > h3, .card-title > p, .card-property > p {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.card-title > p {
+  margin-left: 5px;
+}
+
+.card-title > img, .card-property > img {
+  margin-left: 10px;
+}
+
+.property-image {
+  width: 20px;
+  height: 20px;
+}
+
+.card-image {
+  height: 100%;
   width: 100%;
+  max-width: 100px;
+  margin-right: 2%;
+}
+
+.item {
+  min-height:100px;
+  display: flex;
+  margin-top: 10px;
+  width: 100%;
+  text-decoration: none;
+  color:#F4EEE0;
+  align-items: center;
 }
 
 .item:hover {

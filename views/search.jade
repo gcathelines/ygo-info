@@ -3,9 +3,32 @@ extends layout
 block content
   div(class='search-result')
     each r in result
-      div(class='item') 
-        h3 #{r.item.card_name}
-        p !{r.item.effectText.replace(/\n/g, '<br/>')}
+      a(class='item' href='/card/'+r.item.konami_id) 
+        - if(r.image_exists) {
+        img(src='/images/cards/'+r.item.konami_id+'.png' class='card-image')
+        - } else {
+        img(src='/images/cards/placeholder.png' class='card-image')
+        - }
+        div(class='card-data')
+          div(class='card-title')
+            h3 #{r.item.card_name}
+            - if(r.item.card_type == 'Monster') {
+            img(src='/images/'+r.item.attribute+'.webp' class='property-image')
+            p #{r.item.attribute}
+            - } else {
+            img(src='/images/'+r.item.card_type+'.webp' class='property-image')
+            - }
+          div(class='card-property')
+            - if(r.item.card_type == 'Monster') {
+              p [ #{r.item.monster_type_line} ] ATK: #{r.item.atk} DEF: #{r.item.def}
+            - } else {
+              p #{r.item.property} #{r.item.card_type} 
+              - if(r.item.property != 'Normal') {
+              img(src='/images/'+r.item.property+'.webp' class='property-image')
+              -}
+            - }
+          p !{r.item.effectText.replace(/\n/g, '<br/>')}
+
   script. 
     window.onload = function() {
       document.getElementById("search").focus();

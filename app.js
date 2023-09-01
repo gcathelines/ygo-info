@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var rateLimit = require("express-rate-limit");
+var favicon = require('serve-favicon');
 
 var textRouter = require('./routes/search');
 var imageRouter = require('./routes/image');
@@ -18,9 +20,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(__dirname + '/public/images/Counter.webp'));
+app.use(
+  rateLimit({
+    windowMs: 12 * 60 * 60 * 1000, // 12 hour duration in milliseconds
+    max: 100,
+    message: "You exceeded 100 requests in 24 hour limit!",
+    headers: true,
+  })
+);
 
 app.use('/image', imageRouter);
 app.use('/', textRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
