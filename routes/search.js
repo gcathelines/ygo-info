@@ -25,7 +25,7 @@ const setOptions = {
 const setFuse = new Fuse(db, setOptions, setIndex)
 
 router.get('/', function(req, res, next) {
-  	res.render('search', { name: 'nothing... Type on search bar', result: [] });
+  	res.render('search', { name: '? type here to search', result: [] });
 });
 
 router.get('/:name', function(req, res, next) {
