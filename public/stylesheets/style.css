@@ -99,6 +99,10 @@ footer > h3 {
   align-items: center;
 }
 
+.card-power {
+  padding-left: 5px;
+}
+
 .item:hover {
   padding: 10px;
   font-size: 15px;
@@ -112,9 +116,41 @@ footer > h3 {
   align-items: center;
 }
 
-@media(max-width:600px)
-{
+
+@media screen and (max-width: 600px) {
+  header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  h1 {
+    font-size: 20px;
+  }
+
+  input {
+    font-size: 20px;
+    width: 80%;
+  }
+
+  .card-power {
+    visibility: hidden;
+    display: none;
+  }
+  
+  .search-result > a > .card-data > p {
+    visibility: hidden;
+    display: none;
+  }
+
+  .card-image {
+    width: 20%;
+  }
+
   h3 {
-    font-size: 25px;
+    font-size: 15px;
+  }
+
+  footer > h3 {
+    font-size: 10px;
   }
 }

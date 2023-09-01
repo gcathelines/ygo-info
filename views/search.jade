@@ -20,7 +20,8 @@ block content
             - }
           div(class='card-property')
             - if(r.item.card_type == 'Monster') {
-              p [ #{r.item.monster_type_line} ] ATK: #{r.item.atk} DEF: #{r.item.def}
+              p [ #{r.item.monster_type_line} ] 
+              p(class='card-power') ATK: #{r.item.atk} DEF: #{r.item.def}
             - } else {
               p #{r.item.property} #{r.item.card_type} 
               - if(r.item.property != 'Normal') {
